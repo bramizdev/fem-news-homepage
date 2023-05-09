@@ -1,0 +1,325 @@
+/* ----- Custom properties ----- */
+:root {
+  --clr-primary-300: hsl(35, 77%, 62%);
+  --clr-primary-500: hsl(5, 85%, 63%);
+  --clr-primary-550: hsl(5, 85%, 75%);
+
+  --clr-neutral-100: hsl(36, 100%, 99%);
+  --clr-neutral-200: hsl(233, 8%, 79%);
+  --clr-neutral-400: hsl(236, 13%, 42%);
+  --clr-neutral-900: hsl(240, 100%, 5%);
+  --clr-neutral-950: hsla(240, 100%, 5%, 0.5);
+
+  --ff-base: 'Inter', sans-serif;
+
+  --fw-400: 400;
+  --fw-700: 700;
+  --fw-800: 800;
+
+  --fs-400: 0.875rem;
+  --fs-500: 0.9375rem;
+  --fs-600: 1.25rem;
+  --fs-700: 2rem;
+  --fs-900: 2.55rem;
+}
+
+/* ----- CSS Reset ----- */
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+  padding: 0;
+}
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+  9. UL, OL remove styling
+*/
+ul,
+ol,
+li {
+  list-style-type: none;
+}
+/*
+  10. Button remove styling
+*/
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+/* ----- General styling ----- */
+body {
+  padding: 0 1rem;
+  font-family: var(--ff-base);
+  font-size: var(--fs-500);
+  color: var(--clr-neutral-400);
+}
+
+main {
+  display: grid;
+  gap: 4rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+footer {
+  margin-top: 2rem;
+  width: 100%;
+  text-align: center;
+}
+
+footer a {
+  color: var(--clr-primary-500);
+}
+
+footer a:is(:hover, :focus-visible) {
+  color: var(--clr-primary-550);
+}
+
+/* ----- Utilities ----- */
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn {
+  background-color: var(--clr-primary-500);
+  text-transform: uppercase;
+  color: var(--clr-neutral-100);
+  padding: 0.75rem 2rem;
+  width: max-content;
+  font-weight: var(--fw-700);
+  letter-spacing: 4px;
+  font-size: var(--fs-400);
+}
+
+.btn:is(:hover, :focus-visible) {
+  background-color: var(--clr-neutral-900);
+}
+
+/* ----- Navigation ----- */
+.navigation {
+  padding: 1.75rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation__logo-svg {
+  height: 1.75rem;
+}
+
+.navigation__links {
+  display: flex;
+  gap: 3rem;
+  font-size: var(--fs-600);
+}
+
+.navigation__link {
+  color: var(--clr-neutral-400);
+}
+
+.navigation__link:is(:hover, :focus-visible) {
+  color: var(--clr-primary-500);
+}
+
+.navigation__close-btn {
+  display: none;
+}
+
+.navigation__open-btn {
+  display: none;
+}
+
+@media (max-width: 45rem) {
+  .backdrop {
+    background-color: var(--clr-neutral-950);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .navigation__links {
+    position: fixed;
+    flex-direction: column;
+    gap: 1.25rem;
+    height: 100vh;
+    inset: 0 0 0 32%;
+    background-color: var(--clr-neutral-100);
+    padding: 8rem 2rem;
+    font-size: var(--fs-600);
+    transform: translateX(-1000px);
+  }
+
+  .navigation__close-btn {
+    display: block;
+    position: absolute;
+    top: 1.75rem;
+    right: 1rem;
+  }
+
+  .navigation__open-btn {
+    display: block;
+  }
+}
+
+/* ----- Main article ----- */
+.main-article {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.main-article__heading {
+  padding-top: 0.7rem;
+  font-size: var(--fs-900);
+  font-weight: var(--fw-800);
+  line-height: 1;
+  color: var(--clr-neutral-900);
+}
+
+.main-article__article {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ---- Aside new ----- */
+.new {
+  background-color: var(--clr-neutral-900);
+  padding: 0.8rem 1.375rem 0.25rem 1.375rem;
+}
+
+.new__heading {
+  color: var(--clr-primary-300);
+  font-size: var(--fs-700);
+}
+
+.new__articles {
+  color: var(--clr-neutral-200);
+}
+
+.new__article {
+  padding-top: 1.25rem;
+  padding-bottom: 2.1rem;
+  border-bottom: 1px solid var(--clr-neutral-400);
+}
+
+.new__article:last-child {
+  border: none;
+}
+
+.new__article-heading {
+  color: var(--clr-neutral-100);
+  font-size: var(--fs-600);
+}
+
+.new__article-heading:is(:hover, :focus-visible) {
+  color: var(--clr-primary-300);
+}
+
+/* ----- Top articles ----- */
+.top-articles__list {
+  display: grid;
+  gap: 2rem;
+}
+
+.top-articles__list-article {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.top-articles__list-article-img {
+  width: 100px;
+}
+
+.top-articles__list-article-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top-articles__list-article-number {
+  font-size: var(--fs-700);
+  font-weight: var(--fw-700);
+  color: var(--clr-neutral-200);
+  line-height: 1;
+}
+
+.top-articles__list-article-heading {
+  font-weight: var(--fw-800);
+  color: var(--clr-neutral-900);
+}
+
+.top-articles__list-article-heading:is(:hover, :focus-visible) {
+  color: var(--clr-primary-500);
+}
