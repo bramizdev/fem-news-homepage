@@ -256,7 +256,13 @@ footer a:is(:hover, :focus-visible) {
     background-color: var(--clr-neutral-100);
     padding: 8rem 2rem;
     font-size: var(--fs-600);
-    transform: translateX(-1000px);
+    transition: transform 0.4s ease;
+    transform: translateX(1000px);
+  }
+
+  .navigation__mobile-open {
+    transition: transform 0.4s ease;
+    transform: translateX(0);
   }
 
   .navigation__close-btn {
